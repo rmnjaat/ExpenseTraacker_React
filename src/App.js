@@ -3,6 +3,7 @@ import React from 'react';
 
 
 import Expenses from './components/Expenses/Expenses.js';
+import NewExpense from './components/NewExpense/NewExpense.js';
 
 function App() {
     let expenseDate= new Date(2021,3,28);
@@ -40,7 +41,7 @@ function App() {
     return(
      <div>
 
-            <h2>hiii hello</h2>
+            <NewExpense> </NewExpense>
 
             <Expenses item={expenses} />
 
