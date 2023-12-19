@@ -12,29 +12,46 @@ function ExpenseForm(){
     };
     
     const amountChaneHandler=(event)=>{
+        setenteredAmount(event.target.value);   
 
     };
     const dateChaneHandler=(event)=>{
-
+        setenteredDate(event.target.value);   
     };
 
-    
+    const submitHandler=(event)=>{
+        event.preventDefault();
+
+
+        const expenseData={
+            title:enteredTitle,
+            amount:enteredAmount,
+            date:new Date(enteredDate)
+        }
+        setenteredTitle("");
+        setenteredAmount("");
+        setenteredDate("");
+        console.log(expenseData);
+
+    }
+
+
     return(
-        <form>
+        <form onSubmit={submitHandler}>
             <div className="new-expense__controls">
                 <div className="new-expension__control">
                     <label>Title</label>
-                    <input type="text" onChange={titleChaneHandler}/>
+                    <input type="text" value={enteredTitle} onChange={titleChaneHandler}/>
                 </div>
 
                 <div className="new-expension__control">
                     <label>Amount</label>
-                    <input type="number" min="0.01" step="0.01" onChange={amountChaneHandler} />
+                    <input type="number" value={enteredAmount} min="0.01" step="0.01" onChange={amountChaneHandler} />
                 </div>
 
                 <div className="new-expension__control">
                     <label>Date</label>
-                    <input type="date" onChange={amountChaneHandler} />
+                    <input type="date" value={enteredDate} onChange={dateChaneHandler} />
                 </div>
 
             </div>
