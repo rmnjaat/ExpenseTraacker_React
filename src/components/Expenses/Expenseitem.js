@@ -12,10 +12,16 @@ import Card from '../UI/Card';
 //those value passed in app.ja to expenseitem are now property of (props)
 function Expenseitem(props){
 
+    const [newTitle , setNewTitle ]=useState("");
+
     const [ title, setTitle ]=    useState(props.title);
 
+    const changeHandler=(event)=>{
+        setNewTitle(event.target.value);
+    }
+
     const clickhandler = ()=>{
-        setTitle("New Title")
+        setTitle(newTitle)
     }
     
 
@@ -30,6 +36,8 @@ function Expenseitem(props){
             <h2>{title}</h2>
             <h2 className="expense-item__price">{props.amount} $</h2>
         </div>
+
+        <input type='text' value={newTitle} onChange={changeHandler}></input>
 
         <button onClick={clickhandler} >Change  Tittle</button>
 
